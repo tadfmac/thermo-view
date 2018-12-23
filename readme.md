@@ -34,7 +34,7 @@ Arduinoの`libraries`フォルダに導入後、Arduino IDEを再起動してく
 
 ### 1-4. スケッチの書き込み
 
-Arduino UNOへ、[スケッチ]()を書き込んでください。
+Arduino UNOへ、[スケッチ](./arduino/amg8833midi/amg8833midi.ino)を書き込んでください。
 
 ## 2. 配線
 
