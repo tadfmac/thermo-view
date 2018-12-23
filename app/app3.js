@@ -1,14 +1,16 @@
 var midi = new poormidi();
 
 midi.onMidiEvent = function(e){
-  var cnt = e.data[1];
-
   /*
-    MIDI Note Onで 8x8のサーモセンサの画素が送られてくる
+    MIDI Note On (ch#16) で 8x8のサーモセンサの画素が送られてくる
     Note Number = 画素 (0-63)
     Velocity = 温度 x 2の値 (1/2にして使う)
   */
-  thermoData[e.data[1]] =  e.data[2] / 2;
+  if((e.data[0] & 0xf0) == 0x90){   // note-on
+    if((e.data[0] & 0x0f) == 0x0f){ // ch #16
+      thermoData[e.data[1]] =  e.data[2] / 2;
+    }
+  }
 }
 
 function checkTouchNote(num){
